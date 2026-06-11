@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+  }
+}
+
+/* Custom premium design system utility classes */
+@layer components {
+  /* Glassmorphism Card Style - Overridden for Traditional solid styling */
+  .glass-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Traditional Card Hover Effect */
+  .glass-card-hover {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-card-hover:hover {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Solid Header Navbar */
+  .glass-navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  /* Premium Solid Brand Text */
+  .text-gradient {
+    @apply text-brand-600 font-extrabold;
+  }
+
+  /* Button Premium Styles - Standard Solid Forms */
+  .btn-primary {
+    @apply px-5 py-2.5 rounded-xl font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-sm hover:shadow transition-all duration-200 transform active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply px-5 py-2.5 rounded-xl font-medium bg-white hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-slate-100 hover:border-slate-600 transition-all duration-200 transform active:scale-95;
+  }
+}
+
+/* Custom premium scrollbar styling - Light mode compliant */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
