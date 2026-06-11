@@ -16,16 +16,24 @@ import { errorMiddleware } from "./middlewares/error.middleware.js";
 
 const app = express();
 
+// Trust reverse proxy in production (needed for express-rate-limit on Render/Vercel)
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
+
 // 1. Apply Global Security Middlewares
 app.use(helmet()); // Sets headers to secure HTTP responses against common exploits
 
 // Configure CORS (Cross-Origin Resource Sharing)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  process.env.CLIENT_URL
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174"
-    ],
+    origin: allowedOrigins,
     credentials: true, // Allow cookies to be sent along with HTTP requests
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"] // Restrict allowed HTTP methods
   })
